@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  color-scheme: dark;
+  font-family: "DM Sans", sans-serif;
+  background: #0b1020;
+  color: #f8fafc;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgb(79 70 229 / 15%), transparent 36%),
+    radial-gradient(ellipse at 85% 85%, rgb(14 165 233 / 10%), transparent 34%),
+    #0b1020;
+}
+
+button {
+  font: inherit;
+}
+
+.calculator {
+  width: min(100%, 390px);
+  padding: 26px;
+  border: 1px solid rgb(148 163 184 / 13%);
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgb(30 41 59 / 95%), rgb(15 23 42 / 98%));
+  box-shadow: 0 28px 80px rgb(0 0 0 / 42%), inset 0 1px rgb(255 255 255 / 5%);
+}
+
+.calculator__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  color: #818cf8;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+}
+
+h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.memory-indicator {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border: 1px solid rgb(148 163 184 / 18%);
+  border-radius: 10px;
+  color: #64748b;
+  font-family: "Space Mono", monospace;
+  font-size: 12px;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.memory-indicator.is-active {
+  border-color: rgb(129 140 248 / 50%);
+  color: #a5b4fc;
+}
+
+.display {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: 20px 4px 23px;
+  text-align: right;
+}
+
+.display__expression {
+  width: 100%;
+  min-height: 24px;
+  overflow: hidden;
+  color: #94a3b8;
+  font-family: "Space Mono", monospace;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display__result {
+  max-width: 100%;
+  overflow: hidden;
+  color: #f8fafc;
+  font-family: "Space Mono", monospace;
+  font-size: clamp(34px, 10vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display__result.is-error {
+  color: #fda4af;
+  font-family: "DM Sans", sans-serif;
+  font-size: 25px;
+  letter-spacing: -0.03em;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.key {
+  min-width: 0;
+  height: 58px;
+  border: 1px solid rgb(148 163 184 / 8%);
+  border-radius: 17px;
+  background: rgb(51 65 85 / 62%);
+  color: #f1f5f9;
+  cursor: pointer;
+  font-size: 19px;
+  font-weight: 500;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.key:hover {
+  border-color: rgb(148 163 184 / 25%);
+  background: rgb(71 85 105 / 78%);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 2px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+.key--utility {
+  background: rgb(30 41 59 / 75%);
+  color: #a5b4fc;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.key--operator {
+  background: rgb(79 70 229 / 19%);
+  color: #a5b4fc;
+  font-size: 23px;
+}
+
+.key--operator:hover {
+  background: rgb(99 102 241 / 33%);
+}
+
+.key--equals {
+  border-color: transparent;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 8px 18px rgb(79 70 229 / 25%);
+}
+
+.key--equals:hover {
+  background: linear-gradient(135deg, #818cf8, #6366f1);
+}
+
+.key--wide {
+  grid-column: span 2;
+}
+
+.calculator__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+kbd {
+  padding: 2px 6px;
+  border: 1px solid rgb(148 163 184 / 18%);
+  border-radius: 5px;
+  color: #94a3b8;
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+}
+
+@media (max-width: 380px) {
+  .calculator {
+    padding: 20px;
+    border-radius: 24px;
+  }
+
+  .keypad {
+    gap: 8px;
+  }
+
+  .key {
+    height: 54px;
+    border-radius: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
